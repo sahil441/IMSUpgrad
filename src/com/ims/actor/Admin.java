@@ -6,10 +6,12 @@ class Admin extends SystemUser {
     Supplier[] suppliers = new Supplier[1000];
 
     Admin() {
+        super(null, null);
         System.out.println("Admin constructed !!");
     }
 
     Admin(String n, Address address) {
+        super(n, address);
         setName(n);
         setAddress(address);
     }
