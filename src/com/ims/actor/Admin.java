@@ -1,10 +1,8 @@
 package com.ims.actor;
 // class <className>
-class Admin {
+class Admin extends SystemUser {
     //DataType nameofattribute;
-    private int id;
-    private String  name;
-    Address address;
+
     Supplier[] suppliers = new Supplier[1000];
 
     Admin() {
@@ -13,7 +11,7 @@ class Admin {
 
     Admin(String n, Address address) {
         setName(n);
-        this.address = address;
+        setAddress(address);
     }
 
     // returnType methodName(){ //method definition -> return statement}
@@ -25,7 +23,7 @@ class Admin {
     public void addSupplier(Supplier supplier) {
         // Store the supplier
         int id = storeSupplier(supplier);
-        supplier.id=id;
+        supplier.setId(id);
         mapSupplier(supplier);
         // Mapping of the supplier to the administrator
     }
@@ -40,31 +38,4 @@ class Admin {
         private void mapSupplier(Supplier supplier) {
 
         }
-
-    public String getName() {
-      return name;
-    }
-
-    public void setName(String name) {
-        if(name == null || name == "") {
-            // Generate an alarm
-        }
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
 }
