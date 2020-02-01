@@ -12,8 +12,6 @@ class Admin extends SystemUser {
 
     Admin(String n, Address address) {
         super(n, address);
-        setName(n);
-        setAddress(address);
     }
 
     // returnType methodName(){ //method definition -> return statement}
