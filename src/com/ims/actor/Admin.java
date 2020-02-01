@@ -18,6 +18,9 @@ class Admin extends SystemUser {
 
     // returnType methodName(){ //method definition -> return statement}
     void checkProfileDashboard() {
+        if(loggedIn==false) {
+            System.out.println("Please login first !!");
+        }
         System.out.println("Please selection an option : ");
         System.out.println("Press 1 for Viewing Profile Details");
     }
