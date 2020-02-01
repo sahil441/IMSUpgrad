@@ -59,4 +59,12 @@ class Admin {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
 }
