@@ -2,8 +2,8 @@ package com.ims.actor;
 // class <className>
 class Admin {
     //DataType nameofattribute;
-    int id;
-    String  name;
+    private int id;
+    private String  name;
     Address address;
     Supplier[] suppliers = new Supplier[1000];
 
@@ -12,7 +12,7 @@ class Admin {
     }
 
     Admin(String n, Address address) {
-        name=n;
+        setName(n);
         this.address = address;
     }
 
@@ -22,13 +22,41 @@ class Admin {
         System.out.println("Press 1 for Viewing Profile Details");
     }
 
-    void addSupplier(Supplier supplier) {
+    public void addSupplier(Supplier supplier) {
         // Store the supplier
+        int id = storeSupplier(supplier);
+        supplier.id=id;
+        mapSupplier(supplier);
         // Mapping of the supplier to the administrator
-
     }
 
-    String getName() {
+    // Storing a supplier
+        private int storeSupplier(Supplier supplier) {
+            // Store supplier
+            return -1;
+        }
+
+    // Mapping a supplier with Admin
+        private void mapSupplier(Supplier supplier) {
+
+        }
+
+    public String getName() {
       return name;
+    }
+
+    public void setName(String name) {
+        if(name == null || name == "") {
+            // Generate an alarm
+        }
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
