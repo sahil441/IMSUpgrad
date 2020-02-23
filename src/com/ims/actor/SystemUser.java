@@ -12,9 +12,16 @@ public class SystemUser {
         this.address = address;
     }
 
-    public void login(String userName, String Password) {
-        // Check whether userName & password is valid or not
-        // If valid then store state as loggedIn
+    public boolean login(String userName, String password) {
+        if(userName!=null && userName.equalsIgnoreCase("systemuser") && password!=null && password.equalsIgnoreCase("systemuser")) {
+            loggedIn = true;
+            return true;
+        }
+        return false;
+    }
+
+    public void logout() {
+        loggedIn = false;
     }
 
     public String getName() {
