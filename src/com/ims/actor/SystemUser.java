@@ -1,6 +1,6 @@
 package com.ims.actor;
 
-class SystemUser {
+public class SystemUser {
 
     private int id;
     private String  name;

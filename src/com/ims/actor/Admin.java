@@ -1,23 +1,25 @@
 package com.ims.actor;
+
 // class <className>
-class Admin extends SystemUser {
+public class Admin extends SystemUser {
     //DataType nameofattribute;
 
     Supplier[] suppliers = new Supplier[1000];
 
-    Admin() {
+    public Admin() {
         super(null, null);
         System.out.println("Admin constructed !!");
     }
 
-    Admin(String n, Address address) {
+    public Admin(String n, Address address) {
         super(n, address);
     }
 
     // returnType methodName(){ //method definition -> return statement}
-    void checkProfileDashboard() {
-        if(loggedIn==false) {
+    public void checkProfileDashboard() {
+        if (loggedIn == false) {
             System.out.println("Please login first !!");
+            return;
         }
         System.out.println("Please selection an option : ");
         System.out.println("Press 1 for Viewing Profile Details");
@@ -32,13 +34,13 @@ class Admin extends SystemUser {
     }
 
     // Storing a supplier
-        private int storeSupplier(Supplier supplier) {
-            // Store supplier
-            return -1;
-        }
+    private int storeSupplier(Supplier supplier) {
+        // Store supplier
+        return -1;
+    }
 
     // Mapping a supplier with Admin
-        private void mapSupplier(Supplier supplier) {
+    private void mapSupplier(Supplier supplier) {
 
-        }
+    }
 }
