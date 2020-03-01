@@ -20,4 +20,10 @@ public class Supplier extends SystemUser {
         loggedIn=false;
         return false;
     }
+
+    public void checkProfileDashboard() {
+        System.out.println("Please press : ");
+        System.out.println("4 for logout: ");
+        System.out.println("5 for checking notifications: ");
+    }
 }

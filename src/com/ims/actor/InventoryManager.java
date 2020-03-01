@@ -1,5 +1,8 @@
 package com.ims.actor;
 
+import com.ims.data.OrderHolder;
+import com.ims.entity.Order;
+
 public class InventoryManager extends SystemUser {
 
     public InventoryManager() {
@@ -14,11 +17,9 @@ public class InventoryManager extends SystemUser {
 
     // returnType methodName(){ //method definition -> return statement}
     public void checkProfileDashboard() {
-        if(loggedIn == false) {
-            System.out.println("Please login first!");
-        }
-        System.out.println("Please selection an option : ");
-        System.out.println("Press 1 for Viewing Profile Details");
+        System.out.println("Please press: ");
+        System.out.println("4 for logout");
+        System.out.println("6 placing order");
     }
 
     public boolean login(String userName, String password) {
@@ -29,4 +30,12 @@ public class InventoryManager extends SystemUser {
         loggedIn=false;
         return false;
     }
+
+    public Order placeOrder(Integer productId, Integer quantity, Supplier supplier) {
+        Order order = new Order(productId,quantity,this,supplier);
+        Order savedOrder = OrderHolder.save(order);
+        System.out.println("Order placed with id:"+savedOrder.getId());
+        return order;
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.ims.actor;
 
-public class SystemUser {
+public abstract class SystemUser {
 
     private int id;
     private String  name;
@@ -21,6 +21,13 @@ public class SystemUser {
         // Check whether userName & password is valid or not
         // If valid then store state as loggedIn
     }
+
+    public void logout() {
+        loggedIn=false;
+        System.out.println("User :"+name+" logged out successfully!");
+    }
+
+    public abstract void checkProfileDashboard();
 
     public String getName() {
         return name;
