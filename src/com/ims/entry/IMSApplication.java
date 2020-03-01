@@ -33,10 +33,24 @@ class IMSApplication {
                 break;
             default:
         }
-        
+        showLoginScreen(user,scanner);
     }
 
-    private static int checkUserSelection(Scanner scanner) {
+    private static void showLoginScreen(SystemUser user,Scanner scanner) {
+        boolean loggedIn = false;
+        while (!loggedIn) {
+            System.out.println("UserName: ");
+            String userName = scanner.next();
+            System.out.println("Password: ");
+            String password = scanner.next();
+            loggedIn = user.login(userName, password);
+            if (loggedIn == false) {
+                System.out.println("Invalid Username/password, please try again");
+            }
+        }
+        System.out.println(user.getName()+" logged in successfully");
+    }
+        private static int checkUserSelection(Scanner scanner) {
         // 1 = Admin, 2=Supplier, 3= Inventory Manager
         int systemUserType = scanner.nextInt();
         while (systemUserType < 1 || systemUserType > 3) {

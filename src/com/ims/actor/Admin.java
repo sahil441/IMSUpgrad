@@ -43,4 +43,14 @@ public class Admin extends SystemUser {
     private void mapSupplier(Supplier supplier) {
 
     }
+
+    @Override
+    public boolean login(String userName, String password) {
+        if("admin".equalsIgnoreCase(userName) && "admin".equalsIgnoreCase(password)) {
+            loggedIn=true;
+            return true;
+        }
+        loggedIn=false;
+        return false;
+    }
 }

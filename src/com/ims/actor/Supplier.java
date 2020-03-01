@@ -12,4 +12,12 @@ public class Supplier extends SystemUser {
         System.out.println("Assignments Done");
     }
 
+    public boolean login(String userName, String password) {
+        if("supplier".equalsIgnoreCase(userName) && "supplier".equalsIgnoreCase(password)) {
+            loggedIn=true;
+            return true;
+        }
+        loggedIn=false;
+        return false;
+    }
 }
