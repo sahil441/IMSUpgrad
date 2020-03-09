@@ -5,43 +5,30 @@ import java.util.Scanner;
 
 import com.ims.actor.*;
 import com.ims.data.SystemUserHolder;
-import com.ims.entity.Notification;
 import com.ims.entity.Order;
 
 class IMSApplication {
 
-    private static SystemUser admin;
-    private static SystemUser supplier;
-    private static SystemUser inventoryManager;
-    private static Scanner scanner;
+    public static void main(String[] args) {
 
-    static {
         Address adminAddress = new Address("1303", "Laurence Street", "Delhi", 110007);
-        admin = new Admin("Admin", adminAddress);
+        SystemUser admin = new Admin("Admin", adminAddress);
         SystemUserHolder.save(admin);
 
         Address supplierAddress = new Address("1304", "Laurence Street", "Delhi", 110007);
-        supplier = new Supplier("Supplier", supplierAddress);
+        SystemUser supplier = new Supplier("Supplier", supplierAddress);
         SystemUserHolder.save(supplier);
 
         Address imAddress = new Address("1305", "Laurence Street", "Delhi", 110007);
-        inventoryManager = new InventoryManager("Inventory Manager", imAddress);
-        SystemUserHolder.save(inventoryManager);
+        SystemUser inventoryManager = new InventoryManager("Inventory Manager", imAddress);
 
-        scanner = new Scanner(System.in);
-    }
-
-
-    public static void main(String[] args) {
-        showLoginOption();
-    }
-
-    private static void showLoginOption() {
         System.out.println("Welcome to Inventory Management System!");
         System.out.println("Please Press ");
         System.out.println("1 for Admin");
         System.out.println("2 for Supplier");
         System.out.println("3 for Inventory Manager");
+        java.util.Scanner scanner = new Scanner(System.in);
+
         int userSelection = checkUserSelection(scanner);
         String role = "";
         SystemUser user = null;
@@ -72,19 +59,7 @@ class IMSApplication {
         switch (userProfileDashboardSelection) {
             case 4:
                 user.logout();
-                showLoginOption();
-                break;
-
-            case 5:
-                Notification[] notifications = user.getNotifications();
-                System.out.println("Notifications :");
-                for(int i=0; i<notifications.length;i++) {
-                    Notification n = notifications[i];
-                    if(n!=null) {
-                        System.out.println("From: "+ n.getFromUserId() + " to: "+n.getToUserId()+" message: "+n.getMessage());
-                    } else
-                        break;
-                }
+                System.exit(1);
                 break;
             case 6:
                 if(!role.equalsIgnoreCase("InventoryManager")) {
@@ -99,6 +74,7 @@ class IMSApplication {
                 System.out.println("Supplier id:");
                 Integer supplierId = scanner.nextInt();
                 Order order = ((InventoryManager)user).placeOrder(prodId, quantity,(Supplier) SystemUserHolder.fetchById(supplierId));
+                System.out.println("Order created with id:"+order.getId() + " and status:"+ order.getStatus());
                 break;
         }
     }

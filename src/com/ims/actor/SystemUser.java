@@ -1,15 +1,11 @@
 package com.ims.actor;
 
-import com.ims.entity.Notification;
-
 public abstract class SystemUser {
 
     private int id;
     private String  name;
     private Address address;
     protected boolean loggedIn;
-    private Notification[] notifications = new Notification[10000];
-    private int nCounter = 0;
 
     public SystemUser(String name, Address address) {
         this.name = name;
@@ -60,16 +56,5 @@ public abstract class SystemUser {
         return address;
     }
 
-    public Notification[] getNotifications() {
-        return notifications;
-    }
 
-    public void setNotifications(Notification[] notifications) {
-        this.notifications = notifications;
-    }
-
-    public void notify(Notification notification) {
-        this.notifications[nCounter] = notification;
-        nCounter++;
-    }
 }
