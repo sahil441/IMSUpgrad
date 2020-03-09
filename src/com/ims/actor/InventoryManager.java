@@ -1,7 +1,9 @@
 package com.ims.actor;
 
 import com.ims.data.OrderHolder;
+import com.ims.entity.Notification;
 import com.ims.entity.Order;
+import com.ims.service.Notifier;
 
 public class InventoryManager extends SystemUser {
 
@@ -35,6 +37,7 @@ public class InventoryManager extends SystemUser {
         Order order = new Order(productId,quantity,this,supplier);
         Order savedOrder = OrderHolder.save(order);
         System.out.println("Order placed with id:"+savedOrder.getId());
+        Notifier.notify(this.getId(),supplier.getId(),"Inventory Manager placed a new order for productId:"+productId);
         return order;
     }
 
